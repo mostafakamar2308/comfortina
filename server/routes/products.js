@@ -1,7 +1,7 @@
 const express = require("express");
-const { uploadAllProducts } = require("../controllers/Products");
+const { uploadAllProducts, addProduct } = require("../controllers/Products");
 const productRoute = express.Router();
 
-productRoute.route("/").post(uploadAllProducts);
+productRoute.route("/").post(addProduct);
 
 module.exports = productRoute;

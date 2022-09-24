@@ -1,5 +1,7 @@
 const productModel = require("../models/Product");
 const trueData = require("../furnitureData.json");
+const jwt = require("jsonwebtoken");
+const userModel = require("../models/User");
 
 const uploadAllProducts = async (req, res) => {
   Object.keys(trueData).forEach((ele) => {
@@ -14,5 +16,16 @@ const uploadAllProducts = async (req, res) => {
   });
   res.status(200).json({ success: "created Successfully" });
 };
+const addProduct = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  let s = jwt.verify(token, process.env.JWT_SECRET);
 
-module.exports = { uploadAllProducts };
+  const user = await userModel.findOne({ email: s.email });
+  if (!user.isAdmin) {
+    return res.status(403).json({ msg: "user isn't authenticated" });
+  }
+  const product = await productModel.create({ ...req.body });
+  res.status(200).json({ success: "added product successfully", product });
+};
+
+module.exports = { uploadAllProducts, addProduct };
