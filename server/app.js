@@ -12,10 +12,7 @@ app.get("/", (req, res) => {
   res.send("Hello, e-commerce");
 });
 app.use("/api/v1", authRouter);
-<<<<<<< HEAD
 app.use("/api/v1/products", productRoute);
-=======
->>>>>>> parent of c2d38df (updated product prices that I scrapped previously from jumia and removed the  and made them as numbers)
 
 const PORT = process.env.PORT || 5000;
 
