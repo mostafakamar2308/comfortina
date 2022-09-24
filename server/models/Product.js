@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["chairs", "desks", "trashCans", "storages", "tables", "shelves"],
+    enum: ["chair", "desk", "trashCan", "storage", "table", "shelve"],
     required: true,
   },
   description: {

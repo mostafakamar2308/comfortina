@@ -28,4 +28,23 @@ const addProduct = async (req, res) => {
   res.status(200).json({ success: "added product successfully", product });
 };
 
-module.exports = { uploadAllProducts, addProduct };
+const getProducts = async (req, res) => {
+  const { type, name } = req.query;
+  const products = await productModel.find({});
+
+  let result = products;
+
+  if (name) {
+    result = products.filter((ele) => {
+      if (ele.name.toLowerCase().includes(name.toLowerCase())) {
+        return ele;
+      }
+    });
+  }
+  if (type) {
+    result = result.filter((ele) => ele.type === type);
+  }
+  return res.status(200).json({ products: result, nbHits: result.length });
+};
+
+module.exports = { uploadAllProducts, addProduct, getProducts };
