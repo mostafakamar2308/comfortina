@@ -47,4 +47,46 @@ const getProducts = async (req, res) => {
   return res.status(200).json({ products: result, nbHits: result.length });
 };
 
-module.exports = { uploadAllProducts, addProduct, getProducts };
+const updateSale = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  let s = jwt.verify(token, process.env.JWT_SECRET);
+  const user = await userModel.findOne({ email: s.email });
+  if (!user.isAdmin) {
+    return res.status(403).json({ msg: "user isn't authenticated" });
+  }
+  const { id } = req.params;
+  const { sale } = req.body;
+
+  const updatedProduct = await productModel.findOneAndUpdate(
+    { _id: id },
+    { onSale: sale }
+  );
+  return res.status(200).json({ msg: "Updated Successfully" });
+};
+
+const deleteProduct = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  let s = jwt.verify(token, process.env.JWT_SECRET);
+  const user = await userModel.findOne({ email: s.email });
+  if (!user.isAdmin) {
+    return res.status(403).json({ msg: "user isn't authenticated" });
+  }
+  const { id } = req.params;
+
+  const deleted = await productModel.findByIdAndDelete({ _id: id });
+  return res.status(200).json({ msg: "Deleted Successfully" });
+};
+
+const getOneProduct = async (req, res) => {
+  const { id } = req.params;
+  const product = await productModel.findOne({ _id: id });
+  res.status(200).json({ product });
+};
+
+module.exports = {
+  addProduct,
+  getProducts,
+  updateSale,
+  deleteProduct,
+  getOneProduct,
+};

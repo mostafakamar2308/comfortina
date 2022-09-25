@@ -1,4 +1,5 @@
 const userModel = require("../models/User");
+const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
   let { username, password, name, email, isAdmin } = req.body;
@@ -38,4 +39,16 @@ const login = async (req, res) => {
   });
 };
 
-module.exports = { registerUser, login };
+const updateUserRole = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  let s = jwt.verify(token, process.env.JWT_SECRET);
+  const user = await userModel.findOne({ email: s.email });
+  if (!user.isAdmin) {
+    return res.status(403).json({ msg: "user isn't authenticated" });
+  }
+  const { email, isAdmin } = req.body;
+  const changedUser = await userModel.findOneAndUpdate({ email }, { isAdmin });
+  return res.status(200).json({ msg: "changed successfully" });
+};
+
+module.exports = { registerUser, login, updateUserRole };
