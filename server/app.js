@@ -5,12 +5,14 @@ const productRoute = require("./routes/products");
 const app = express();
 require("dotenv").config();
 require("express-async-errors");
+var cors = require("cors");
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello, e-commerce");
 });
+app.use(cors());
 app.use("/api/v1", authRouter);
 app.use("/api/v1/products", productRoute);
 
