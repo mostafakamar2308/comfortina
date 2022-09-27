@@ -29,9 +29,11 @@ const addProduct = async (req, res) => {
 };
 
 const getProducts = async (req, res) => {
-  const { type, name } = req.query;
-  const products = await productModel.find({});
-
+  const { type, name, page, limit } = req.query;
+  const products = await productModel
+    .find({})
+    .skip(page * 10 || 0)
+    .limit(limit || 10);
   let result = products;
 
   if (name) {
