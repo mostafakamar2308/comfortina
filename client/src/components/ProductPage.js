@@ -8,6 +8,7 @@ import chair from "../assets/chair.png";
 import Product from "./Product";
 import axios from "axios";
 import CategoryButton from "./CategoryButton";
+import Pagination from "./Pagination";
 
 function ProductPage() {
   const [products, setProducts] = useState();
@@ -37,7 +38,6 @@ function ProductPage() {
       const categoryName =
         e.target.getAttribute("data-category") ||
         e.target.parentNode.getAttribute("data-category");
-      console.log(categoryName);
       return prevCategoryList.map((category) => {
         if (category.categoryName === categoryName) {
           category.active = true;
@@ -48,6 +48,12 @@ function ProductPage() {
         }
       });
     });
+    setPage(0);
+  };
+
+  const changePage = (e) => {
+    const page = Number(e.target.textContent) - 1;
+    setPage(page);
   };
 
   return (
@@ -65,20 +71,30 @@ function ProductPage() {
             />
           ))}
         </div>
-        <div className="flex flex-wrap justify-center gap-5">
-          {products &&
-            products.slice(page * 10, (page + 1) * 10).map((ele) => {
-              return (
-                <Product
-                  productImg={ele.img}
-                  productName={ele.name}
-                  key={ele.id}
-                  productPrice={ele.price}
-                  productSale={ele.onSale}
-                  productId={ele.id}
-                />
-              );
-            })}
+        <div className="">
+          <div className="flex flex-wrap justify-center gap-5">
+            {products &&
+              products.slice(page * 10, (page + 1) * 10).map((ele) => {
+                return (
+                  <Product
+                    productImg={ele.img}
+                    productName={ele.name}
+                    key={ele.id}
+                    productPrice={ele.price}
+                    productSale={ele.onSale}
+                    productId={ele.id}
+                  />
+                );
+              })}
+          </div>
+          {products && (
+            <Pagination
+              itemsCount={products.length}
+              pageLimit={10}
+              currentPage={page}
+              handlePagintation={changePage}
+            />
+          )}
         </div>
       </section>
     </>
