@@ -11,7 +11,8 @@ function CategoriesProduct({ products, categoryName }) {
         {products.map((ele) => {
           return (
             <Product
-              key={ele.id}
+              key={ele._id}
+              productId={ele.id}
               productImg={ele.img}
               productName={ele.name}
               productPrice={ele.price}

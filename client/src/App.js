@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import ProductPage from "./components/ProductPage";
 
 const AppContext = createContext();
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <AppContext.Provider value={{ user, setUser, products }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/products" element={<ProductPage />} />
           </Routes>
         </AppContext.Provider>
       )}

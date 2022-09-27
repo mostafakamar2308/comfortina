@@ -6,7 +6,7 @@ import HomeProducts from "./HomeProducts";
 function Home() {
   return (
     <div className="relative w-screen box-border">
-      <SiteHeader />
+      <SiteHeader absolute={true} />
       <Hero />
       <HomeProducts />
     </div>

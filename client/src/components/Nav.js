@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Nav() {
   return (
     <nav className="flex justify-evenly font-semibold ">
-      <Link to="/home" className="transition-all duration-300 hover:text-white">
+      <Link to="/" className="transition-all duration-300 hover:text-white">
         Home
       </Link>
       <Link

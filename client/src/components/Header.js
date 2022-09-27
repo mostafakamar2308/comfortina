@@ -2,9 +2,15 @@ import React from "react";
 import Nav from "./Nav";
 import Actions from "./Actions";
 
-function SiteHeader() {
+function SiteHeader(props) {
   return (
-    <header className="grid grid-cols-3 p-5 items-center shadow-md bg-tranparent absolute z-10 w-full">
+    <header
+      className={
+        props.absolute
+          ? "absolute grid grid-cols-3 p-5 items-center shadow-lg bg-tranparent  z-10 w-full bg-header"
+          : "grid grid-cols-3 p-5 items-center shadow-lg bg-tranparent  z-10 w-full bg-header border-b border-b-dark-blue"
+      }
+    >
       <h1 className="logo text-3xl font-bold pointer-events-none text-white uppercase">
         Comfortina
       </h1>
