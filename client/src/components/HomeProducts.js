@@ -6,7 +6,6 @@ function HomeProducts() {
   const context = useContext(AppContext);
   const chairs = context.products.filter((ele) => ele.type === "chair");
   const shelves = context.products.filter((ele) => ele.type === "shelve");
-  console.log(shelves);
   const tables = context.products.filter((ele) => ele.type === "table");
   const desks = context.products.filter((ele) => ele.type === "desk");
   return (

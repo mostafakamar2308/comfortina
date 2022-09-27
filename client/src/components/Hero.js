@@ -1,10 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import hero from "../assets/hero (2).jpg";
-import searchIcon from "../assets/loupe.png";
 
 function Hero() {
-  const [searchValue, setSearchValue] = React.useState("");
-
   return (
     <section className="hero relative h-screen overflow-hidden flex justify-center items-center">
       <img
@@ -21,16 +19,19 @@ function Hero() {
           egyptian company that provides high quality furniture for resonable
           prices
         </p>
-        <div className="flex w-fit border-2 border-light-red shadow-md ">
-          <input
-            type="text"
-            autoFocus={true}
-            className="text-3xl bg-white h-10 indent-1 focus:outline-none py-1 px-2"
-            onInput={(e) => setSearchValue(e.target.value)}
-          />
-          <button className="bg-white">
-            <img src={searchIcon} alt="Search Icon" className="h-10 p-1" />
-          </button>
+        <div className="links flex justify-around w-2/5">
+          <Link
+            to="/products"
+            className="px-3 py-2 bg-black text-white rounded-lg"
+          >
+            See our goodies
+          </Link>
+          <Link
+            to="/products"
+            className="px-3 py-2 bg-black text-white rounded-lg"
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
     </section>

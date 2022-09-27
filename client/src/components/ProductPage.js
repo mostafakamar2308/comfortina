@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SiteHeader from "./Header";
 import shelf from "../assets/shelf.png";
 import table from "../assets/table.png";
@@ -9,6 +9,8 @@ import Product from "./Product";
 import axios from "axios";
 import CategoryButton from "./CategoryButton";
 import Pagination from "./Pagination";
+import Search from "./Search";
+import notFound from "../assets/404.png";
 
 function ProductPage() {
   const [products, setProducts] = useState();
@@ -20,18 +22,25 @@ function ProductPage() {
     { categoryName: "desk", img: desk, active: false },
   ]);
   const [page, setPage] = useState(0);
+  const [searchValue, setSearchValue] = React.useState("");
   useEffect(() => {
+    search();
+  }, [category, page]);
+
+  const search = () => {
     axios
       .get(
         "http://localhost:5000/api/v1/products?type=" +
           category.filter((ele) => ele.active === true)[0].categoryName +
+          "&name=" +
+          searchValue +
           "&limit=" +
           5000
       )
       .then((res) => {
         setProducts(res.data.products);
       });
-  }, [category, page]);
+  };
 
   const changeCategory = (e) => {
     setCategory((prevCategoryList) => {
@@ -61,6 +70,7 @@ function ProductPage() {
       <SiteHeader absolute={false} />
       <section className="h-screen grid grid-cols-products relative">
         <div className="categories flex flex-col items-center top-0 gap-x-10 py-10 border-r border-dark-blue">
+          <Search handleSearchInput={setSearchValue} handleSearch={search} />
           {category.map((ele) => (
             <CategoryButton
               key={ele.categoryName}
@@ -72,20 +82,32 @@ function ProductPage() {
           ))}
         </div>
         <div className="">
-          <div className="flex flex-wrap justify-center gap-5">
+          <div className="flex flex-wrap justify-center gap-5 p-3">
             {products &&
-              products.slice(page * 10, (page + 1) * 10).map((ele) => {
-                return (
-                  <Product
-                    productImg={ele.img}
-                    productName={ele.name}
-                    key={ele.id}
-                    productPrice={ele.price}
-                    productSale={ele.onSale}
-                    productId={ele.id}
-                  />
-                );
-              })}
+              (products.length > 0 ? (
+                products.slice(page * 10, (page + 1) * 10).map((ele) => {
+                  return (
+                    <Product
+                      productImg={ele.img}
+                      productName={ele.name}
+                      key={ele.id}
+                      productPrice={ele.price}
+                      productSale={ele.onSale}
+                      productId={ele.id}
+                    />
+                  );
+                })
+              ) : (
+                <div className="flex flex-col justify-center items-center h-screen">
+                  <img src={notFound} alt={notFound} />
+                  <p className="text-3xl font-bold">
+                    Sorry, We didn't find what you are looking for &#128532;
+                  </p>
+                  <p className="text-xl font-bold my-3">
+                    Search about Something else
+                  </p>
+                </div>
+              ))}
           </div>
           {products && (
             <Pagination
