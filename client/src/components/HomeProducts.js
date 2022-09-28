@@ -9,7 +9,7 @@ function HomeProducts() {
   const tables = context.products.filter((ele) => ele.type === "table");
   const desks = context.products.filter((ele) => ele.type === "desk");
   return (
-    <section>
+    <section className="">
       <CategoriesProduct products={chairs.slice(0, 4)} categoryName="Chairs" />
       <CategoriesProduct
         products={shelves.slice(0, 4)}

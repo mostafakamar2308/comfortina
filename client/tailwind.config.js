@@ -10,6 +10,14 @@ module.exports = {
       },
       gridTemplateColumns: {
         products: "20% 80%",
+        contact: "60% 40%",
+      },
+      listStyleType: {
+        plus: "+",
+        minus: "-",
+      },
+      height: {
+        screenMinus: "calc( 100vh - 15vh )",
       },
     },
   },
