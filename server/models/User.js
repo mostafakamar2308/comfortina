@@ -48,6 +48,9 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    messages: {
+      type: Array,
+    },
   },
   { timestamps: true }
 );

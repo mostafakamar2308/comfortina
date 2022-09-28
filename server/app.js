@@ -6,6 +6,7 @@ const app = express();
 require("dotenv").config();
 require("express-async-errors");
 var cors = require("cors");
+const contactRouter = require("./routes/ContactRoute");
 
 app.use(express.json());
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 app.use(cors());
 app.use("/api/v1", authRouter);
 app.use("/api/v1/products", productRoute);
+app.use("/api/v1/contact", contactRouter);
 
 const PORT = process.env.PORT || 5000;
 

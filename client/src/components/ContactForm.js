@@ -13,7 +13,12 @@ function ContactForm() {
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor="email" className="group">
+          E-mail
+          <span className="text-sm opacity-0 group-hover:opacity-100 transition-all">
+            will be replyed on
+          </span>
+        </label>
         <input
           id="email"
           type="email"
@@ -26,7 +31,7 @@ function ContactForm() {
         <textarea
           id="msg"
           required
-          className="w-11/12 border border-dark-blue ml-2 my-2 rounded-md focus:outline-none"
+          className="w-11/12 border border-dark-blue ml-2 my-2 rounded-md focus:outline-none resize-none"
         />
       </div>
       <button className="border-white border py-2 px-4 bg-light-red transition-all duration-300 text-white block m-auto rounded-md hover:border-dark-blue">
