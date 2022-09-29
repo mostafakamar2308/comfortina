@@ -16,8 +16,8 @@ function Product({
   };
   return (
     <div
-      className="flex flex-col items-center  w-96 relative group"
-      dataId={productId}
+      className="flex flex-col items-center  w-96 relative group text-black"
+      dataid={productId}
     >
       <button
         onClick={handleFavorite}

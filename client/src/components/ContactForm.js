@@ -37,13 +37,13 @@ function ContactForm() {
           required
           autoFocus
           onInput={handleFormInput}
-          className="w-11/12 border-b border-b-dark-blue ml-2 my-2 focus:outline-none"
+          className="w-11/12 border-b border-b-dark-blue ml-2 my-2 focus:outline-none text-black rounded-md"
         />
       </div>
       <div className="flex flex-col">
         <label htmlFor="email" className="group">
           E-mail
-          <span className="text-sm opacity-0 group-hover:opacity-100 transition-all">
+          <span className="text-sm opacity-0 group-hover:opacity-100 transition-all mx-1">
             will be replyed on
           </span>
         </label>
@@ -52,7 +52,7 @@ function ContactForm() {
           type="email"
           onInput={handleFormInput}
           required
-          className="w-11/12 border-b border-b-dark-blue ml-2 my-2 focus:outline-none"
+          className="w-11/12 border-b border-b-dark-blue ml-2 my-2 focus:outline-none text-black rounded-md"
         />
       </div>
       <div className="flex flex-col">
@@ -61,7 +61,7 @@ function ContactForm() {
           id="msg"
           onInput={handleFormInput}
           required
-          className="w-11/12 border border-dark-blue ml-2 my-2 rounded-md focus:outline-none resize-none"
+          className="w-11/12 border border-dark-blue ml-2 my-2 rounded-md focus:outline-none resize-none text-black"
         />
       </div>
       <button className="border-white border py-2 px-4 bg-light-red transition-all duration-300 text-white block m-auto rounded-md hover:border-dark-blue">

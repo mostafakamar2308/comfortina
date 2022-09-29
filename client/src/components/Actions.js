@@ -2,6 +2,7 @@ import React from "react";
 import wish from "../assets/wishlist.png";
 import cart from "../assets/shopping-cart.png";
 import user from "../assets/user.png";
+import { Link } from "react-router-dom";
 
 function Actions() {
   return (
@@ -14,9 +15,9 @@ function Actions() {
         <img src={cart} alt="cart icon" className="h-9"></img>
         <p className="text-sm self-end">0</p>
       </button>
-      <button>
+      <Link to="/login">
         <img src={user} alt="user icon " className="h-9"></img>
-      </button>
+      </Link>
     </div>
   );
 }

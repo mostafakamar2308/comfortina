@@ -66,9 +66,9 @@ function ProductPage() {
   };
 
   return (
-    <>
+    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white h-fit">
       <SiteHeader absolute={false} />
-      <section className="h-screen grid grid-cols-products relative">
+      <section className="grid grid-cols-products relative">
         <div className="categories flex flex-col items-center top-0 gap-x-10 py-10 border-r border-dark-blue">
           <Search handleSearchInput={setSearchValue} handleSearch={search} />
           {category.map((ele) => (
@@ -119,7 +119,7 @@ function ProductPage() {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
