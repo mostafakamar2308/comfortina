@@ -7,7 +7,7 @@ const sendToMostafaKamar = async (req, res) => {
     { $push: { messages: { msg, email, name } } },
     { new: true }
   );
-  res.status(200).json({ msg: admin });
+  res.status(200).json({ code: 200, msg: "success" });
 };
 
 module.exports = { sendToMostafaKamar };
