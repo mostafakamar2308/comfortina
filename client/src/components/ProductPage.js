@@ -88,9 +88,9 @@ function ProductPage() {
                 products.slice(page * 10, (page + 1) * 10).map((ele) => {
                   return (
                     <Product
+                      key={ele.id}
                       productImg={ele.img}
                       productName={ele.name}
-                      key={ele.id}
                       productPrice={ele.price}
                       productSale={ele.onSale}
                       productId={ele.id}
