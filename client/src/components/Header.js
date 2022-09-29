@@ -7,8 +7,8 @@ function SiteHeader(props) {
     <header
       className={
         props.absolute
-          ? "absolute grid grid-cols-3 p-5 items-center shadow-lg bg-tranparent  z-10 w-full "
-          : "grid grid-cols-3 p-5 items-center shadow-lg bg-tranparent  z-10 w-full border-b border-b-dark-blue"
+          ? "absolute grid grid-cols-3 p-5 items-center shadow-lg bg-tranparent  z-10 w-full text-white "
+          : "grid grid-cols-3 p-5 items-center shadow-lg bg-tranparent  z-10 w-full border-b text-white border-b-dark-blue"
       }
     >
       <h1 className="logo text-3xl font-bold pointer-events-none text-white uppercase">

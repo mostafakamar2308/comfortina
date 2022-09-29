@@ -6,6 +6,7 @@ function LoginInput({ placeholder, id, handleInput, type, img, label }) {
       <div className="border-b p-1 border-b-dark-blue group flex py-3 gap-x-2">
         <img src={img} alt="login img" width={20} />
         <input
+          required
           className="focus:outline-none"
           placeholder={placeholder}
           id={id}

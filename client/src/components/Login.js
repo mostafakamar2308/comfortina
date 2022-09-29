@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import SiteHeader from "./Header";
 import LoginInput from "./loginInput";
 import mail from "../assets/mail.png";
 import pass from "../assets/padlock.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../App";
 
 function Login() {
+  const [logData, setLogData] = useState({
+    email: "",
+    password: "",
+  });
+  const userContext = useContext(UserContext);
+
+  const handleInput = (e) => {
+    setLogData((prev) => {
+      return { ...prev, [e.target.id]: e.target.value };
+    });
+  };
+
+  const postLogIn = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/v1/login", { ...logData })
+      .then((res) => {
+        userContext.setUser(res.data);
+        window.localStorage.setItem("userToken", res.data.token);
+      });
+  };
+
   return (
     <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-black">
       <SiteHeader />
@@ -19,16 +43,19 @@ function Login() {
               type="email"
               label="Email"
               img={mail}
+              handleInput={handleInput}
             />
             <LoginInput
               placeholder="Enter your password"
               id="password"
               type="password"
+              handleInput={handleInput}
               label="Password"
               img={pass}
             />
             <button
               type="submit"
+              onClick={postLogIn}
               className="border py-1 px-2 w-2/3 text-white font-bold block m-auto rounded-2xl bg-gradient-to-r from-rose-500 via-red-400 to-red-500"
             >
               Log In
