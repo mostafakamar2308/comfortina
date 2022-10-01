@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import wish from "../assets/wishlist.png";
 import cart from "../assets/shopping-cart.png";
 import user from "../assets/user.png";
@@ -8,6 +8,12 @@ import { Overlay, UserContext } from "../App";
 function Actions() {
   const context = useContext(UserContext);
   const overlay = useContext(Overlay);
+  const [favoriteCounter, setFavoriteCounter] = useState(0);
+
+  useEffect(() => {
+    console.log(context.favoriteList.length);
+    setFavoriteCounter(context.favoriteList.length);
+  }, [context.favoriteList.length]);
 
   return (
     <div className="flex justify-end gap-x-5 font-semibold">
@@ -18,7 +24,7 @@ function Actions() {
         }}
       >
         <img src={wish} alt="wishList icon" className="h-9"></img>
-        <p className="self-end text-sm">{context.favoriteList.length || 0}</p>
+        <p className="self-end text-sm">{favoriteCounter || 0}</p>
       </button>
       <button
         className="flex"

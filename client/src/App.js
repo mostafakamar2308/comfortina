@@ -41,7 +41,12 @@ function App() {
   const [cartOverlay, setCartOverlay] = useState(false);
   return (
     <>
-      {favoriteOverlay && <Favorites />}
+      {favoriteOverlay && (
+        <Favorites
+          favorites={favoriteList}
+          handleOverLay={setFavoriteOverlay}
+        />
+      )}
       <BrowserRouter>
         <UserContext.Provider
           value={{ user, setUser, favoriteList, setFavoriteList }}

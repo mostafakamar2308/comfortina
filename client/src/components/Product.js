@@ -29,14 +29,14 @@ function Product({
           productID,
         })
         .then((res) => {
-          console.log(res, productID);
           const loved = user.favoriteList.filter((ele) => ele === productId);
+          console.log(loved);
           if (loved.length > 0) {
-            user.favoriteList = user.favoriteList.filter(
-              (ele) => ele !== productId
-            );
+            user.setFavoriteList((prev) => {
+              return prev.filter((ele) => ele !== productId);
+            });
           } else {
-            user.favoriteList.push(productId);
+            user.setFavoriteList((prev) => [...prev, productId]);
           }
           setLovedBtn((prev) => !prev);
         });
