@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import Register from "./components/Register";
 
 const UserContext = createContext();
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/products" element={<ProductPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

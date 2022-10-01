@@ -11,7 +11,14 @@ const registerUser = async (req, res) => {
   const token = UserDB.createJWT();
   res
     .status(201)
-    .json({ user: { username: UserDB.username, name: UserDB.name }, token });
+    .json({
+      user: {
+        username: UserDB.username,
+        name: UserDB.name,
+        isAdmin: UserDB.isAdmin,
+      },
+      token,
+    });
 };
 
 const login = async (req, res) => {

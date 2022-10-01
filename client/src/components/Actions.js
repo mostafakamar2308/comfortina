@@ -21,10 +21,11 @@ function Actions() {
       <Link to="/login">
         {context.user ? (
           <div className="text-center rounded-full border p-2">
-            {context.user.name
-              .split(" ")
-              .map((ele) => ele[0])
-              .join(" ")}
+            {context.user &&
+              context.user.name
+                .split(" ")
+                .map((ele) => ele[0])
+                .join("")}
           </div>
         ) : (
           <img src={user} alt="user icon " className="h-9"></img>
