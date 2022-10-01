@@ -36,7 +36,7 @@ function Login() {
       <div className="gap-y-2 h-screen flex flex-col items-center justify-center">
         <form className="flex flex-col justify-around items-center h-5/6 gap-y-2 bg-white w-96 rounded-md">
           <h2 className="text-5xl font-bold pointer-events-none">LOGIN</h2>
-          <div className="flex flex-col gap-y-4">
+          <div className="flex flex-col gap-y-4 w-3/5">
             <LoginInput
               placeholder="Enter your Email"
               id="email"

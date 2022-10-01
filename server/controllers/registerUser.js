@@ -31,7 +31,6 @@ const login = async (req, res) => {
   res.json({
     user: {
       name: user.name,
-      email: user.email,
       userName: user.username,
       isAdmin: user.isAdmin,
     },
