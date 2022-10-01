@@ -18,7 +18,6 @@ function App() {
       axios
         .post("http://localhost:5000/api/v1/token", { token })
         .then((res) => {
-          console.log(res.data);
           setUser(res.data);
         })
         .catch((err) => {

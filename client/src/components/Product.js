@@ -10,6 +10,7 @@ function Product({
   productId,
 }) {
   const [lovedBtn, setLovedBtn] = useState(false);
+  console.log(productId);
 
   const handleFavorite = () => {
     setLovedBtn((prev) => !prev);

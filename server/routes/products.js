@@ -6,9 +6,11 @@ const {
   deleteProduct,
   getOneProduct,
 } = require("../controllers/Products");
+const favoriteManagment = require("../controllers/userActions");
 const productRoute = express.Router();
 
 productRoute.route("/").post(addProduct).get(getProducts);
+productRoute.route("/favorite").post(favoriteManagment);
 productRoute
   .route("/:id")
   .get(getOneProduct)

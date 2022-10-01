@@ -51,6 +51,14 @@ const userSchema = new mongoose.Schema(
     messages: {
       type: Array,
     },
+    favorites: {
+      type: Array,
+      default: [],
+    },
+    cart: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: true }
 );
