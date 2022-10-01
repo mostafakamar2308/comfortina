@@ -12,7 +12,7 @@ function CategoriesProduct({ products, categoryName }) {
           return (
             <Product
               key={ele._id}
-              productId={ele.id}
+              productId={ele._id}
               productImg={ele.img}
               productName={ele.name}
               productPrice={ele.price}

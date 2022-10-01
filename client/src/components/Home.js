@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "../App";
 import SiteHeader from "./Header";
 import Hero from "./Hero";
 import HomeProducts from "./HomeProducts";
@@ -8,6 +9,7 @@ const AppContext = createContext();
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
     axios
