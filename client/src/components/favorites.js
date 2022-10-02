@@ -6,14 +6,15 @@ function Favorites({ handleOverLay, favorites }) {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    //DOESN"T WORK
-    setProductData((prev) => {
-      return favorites.map(async (ele) => {
-        const res = await axios.get(
-          "http://localhost:5000/api/v1/products/" + ele
-        );
-        return res.data.product;
-      });
+    //It works
+    const products = favorites.map((ele) => {
+      return axios
+        .get("http://localhost:5000/api/v1/products/" + ele)
+        .then((response) => response.data);
+    });
+    Promise.all(products).then((res) => {
+      console.log(res);
+      setProductData(res);
     });
   }, []);
 
@@ -31,10 +32,10 @@ function Favorites({ handleOverLay, favorites }) {
       <div>
         {productData &&
           productData.map((ele) => {
-            console.log(ele);
+            const product = ele.product;
             return (
-              <div key={ele._id} className="text-black">
-                {ele.name}
+              <div key={product._id} className="text-black">
+                {product.name}
               </div>
             );
           })}
