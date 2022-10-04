@@ -58,7 +58,7 @@ function App() {
       {cartOverlay && (
         <Cart handleOverLay={setCartOverlay} cart={cart} handleCart={setCart} />
       )}
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <UserContext.Provider
           value={{
             user,
