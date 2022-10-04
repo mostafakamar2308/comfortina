@@ -11,9 +11,10 @@ function Cart({ handleOverLay, cart, handleCart }) {
       axios
         .post("http://localhost:5000/api/v1/products/cart", {
           token,
-          id,
+          productID: id,
         })
         .then((res) => {
+          console.log(res);
           const inCart = cart.filter((ele) => ele === id);
           if (inCart.length > 0) {
             handleCart((prev) => {
@@ -64,7 +65,9 @@ function Cart({ handleOverLay, cart, handleCart }) {
             );
           })
         ) : (
-          <div>No products in your cart</div>
+          <div className="text-3xl font-bold leading-loose">
+            No products in your cart
+          </div>
         )}
       </div>
     </div>
