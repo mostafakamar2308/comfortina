@@ -8,6 +8,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import Register from "./components/Register";
 import Favorites from "./components/favorites";
+import Cart from "./components/Cart";
 
 const UserContext = createContext();
 const Overlay = createContext();
@@ -15,6 +16,7 @@ const Overlay = createContext();
 function App() {
   const [user, setUser] = useState();
   const [favoriteList, setFavoriteList] = useState([]);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     if (window.localStorage.getItem("userToken")) {
       let token = window.localStorage.getItem("userToken");
@@ -32,8 +34,14 @@ function App() {
           token: window.localStorage.getItem("userToken"),
         })
         .then((res) => {
-          console.log(res.data.favorites);
           setFavoriteList(res.data.favorites);
+        });
+      axios
+        .post("http://localhost:5000/api/v1/products/getCart", {
+          token: window.localStorage.getItem("userToken"),
+        })
+        .then((res) => {
+          setCart(res.data.cart);
         });
     }
   }, []);
@@ -47,9 +55,17 @@ function App() {
           handleOverLay={setFavoriteOverlay}
         />
       )}
+      {cartOverlay && <Cart handleOverLay={setCartOverlay} cart={cart} />}
       <BrowserRouter>
         <UserContext.Provider
-          value={{ user, setUser, favoriteList, setFavoriteList }}
+          value={{
+            user,
+            setUser,
+            favoriteList,
+            setFavoriteList,
+            cart,
+            setCart,
+          }}
         >
           <Overlay.Provider
             value={{

@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import close from "../assets/close.png";
-import ProductWish from "./ProductWish";
+import ProductBuy from "./productBuy";
 
-function Favorites({ handleOverLay, favorites }) {
+function Cart({ handleOverLay, cart }) {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
     //It works
-    const products = favorites.map((ele) => {
+    const products = cart.map((ele) => {
       return axios
         .get("http://localhost:5000/api/v1/products/" + ele)
         .then((response) => response.data);
@@ -16,42 +16,39 @@ function Favorites({ handleOverLay, favorites }) {
     Promise.all(products).then((res) => {
       setProductData(res);
     });
-  }, [favorites]);
-
+  }, [cart]);
   return (
-    <section className="fixed h-screen bg-white z-30 w-full p-5">
-      <div className="flex items-center justify-between p-3">
-        <h2 className="text-5xl font-bold">Favorites</h2>
+    <div className="absolute min-h-full bg-white w-full z-40 p-5">
+      <div className="flex justify-between ">
+        <h2 className="text-5xl font-bold">Cart</h2>
         <button
           onClick={() => {
             handleOverLay(false);
           }}
         >
-          <img src={close} width="40" alt="x" />
+          <img src={close} alt="close overLay" className="w-10"></img>
         </button>
       </div>
-      <div className="grid gap-y-5 place-items-center h-24">
+      <div>
         {productData.length > 0 ? (
           productData.map((ele) => {
             const product = ele.product;
+            console.log(ele);
             return (
-              <ProductWish
-                key={product._id}
-                productName={product.name}
-                productImg={product.img}
-                productPrice={product.price}
+              <ProductBuy
                 productId={product._id}
+                productName={product.name}
+                productPrice={product.price}
+                productImg={product.img}
               />
             );
           })
         ) : (
-          <p className="text-4xl font-bold text-transparent  bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 ">
-            Nothing in the favorites
-          </p>
+          <div>No products in your cart</div>
         )}
       </div>
-    </section>
+    </div>
   );
 }
 
-export default Favorites;
+export default Cart;

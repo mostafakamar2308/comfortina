@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import unloved from "../assets/unlovedheart.png";
 import loved from "../assets/lovedheart.png";
 import axios from "axios";
+import buy from "../assets/buy.png";
+import unbuy from "../assets/unbuy.png";
 import { UserContext } from "../App";
 
 function Product({
@@ -12,6 +14,7 @@ function Product({
   productId,
 }) {
   const [lovedBtn, setLovedBtn] = useState(false);
+  const [buyBtn, setBuyBtn] = useState(false);
   const user = useContext(UserContext);
   useEffect(() => {
     const loved = user.favoriteList.filter((ele) => ele === productId);
@@ -20,7 +23,6 @@ function Product({
 
   const handleFavorite = (e) => {
     const productID = e.target.getAttribute("dataid");
-    console.log(productID);
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
@@ -30,7 +32,6 @@ function Product({
         })
         .then((res) => {
           const loved = user.favoriteList.filter((ele) => ele === productId);
-          console.log(loved);
           if (loved.length > 0) {
             user.setFavoriteList((prev) => {
               return prev.filter((ele) => ele !== productId);
@@ -39,6 +40,29 @@ function Product({
             user.setFavoriteList((prev) => [...prev, productId]);
           }
           setLovedBtn((prev) => !prev);
+        });
+    }
+  };
+
+  const handleBuy = (e) => {
+    const productID = e.target.getAttribute("dataid");
+    if (window.localStorage.getItem("userToken")) {
+      const token = window.localStorage.getItem("userToken");
+      axios
+        .post("http://localhost:5000/api/v1/products/cart", {
+          token,
+          productID,
+        })
+        .then((res) => {
+          const cart = user.cart.filter((ele) => ele === productId);
+          if (cart.length > 0) {
+            user.setCart((prev) => {
+              return prev.filter((ele) => ele !== productId);
+            });
+          } else {
+            user.setCart((prev) => [...prev, productId]);
+          }
+          setBuyBtn((prev) => !prev);
         });
     }
   };
@@ -59,7 +83,20 @@ function Product({
           className="h-5"
         />
       </button>
-      <img src={productImg} alt={productName} />
+      <div className="relative">
+        <img src={productImg} alt={productName} />
+        <button
+          dataid={productId}
+          onClick={handleBuy}
+          className="absolute bottom-2 right-2 w-10 opacity-0 transition-all border rounded-full p-1 border-black duration-300 group-hover:opacity-100"
+        >
+          <img
+            dataid={productId}
+            src={!buyBtn ? buy : unbuy}
+            alt="Buy items"
+          ></img>
+        </button>
+      </div>
       <h4 className="text-md clamp"> {productName}</h4>
       <h4 className="font-bold">{productPrice} EGP</h4>
       {productSale > 0 && <div> {productSale}</div>}

@@ -36,8 +36,38 @@ const getFavorites = async (req, res) => {
   res.status(200).json({ favorites });
 };
 
-const cartManagment = (req, res) => {
-  res.send("managment of cart");
+const getCart = async (req, res) => {
+  const { token } = req.body;
+  const isLoggedIn = jwt.verify(token, process.env.JWT_SECRET);
+  const userBeforeUpdate = await userModel.find({
+    username: isLoggedIn.username,
+  });
+  const cart = userBeforeUpdate[0].cart.filter(Boolean);
+  res.status(200).json({ cart });
 };
 
-module.exports = { favoriteManagment, getFavorites };
+const cartManagment = async (req, res) => {
+  const { productID, token } = req.body;
+  const isLoggedIn = token && jwt.verify(token, process.env.JWT_SECRET);
+  const userBeforeUpdate = await userModel.find({
+    username: isLoggedIn.username,
+  });
+  const currentCart = userBeforeUpdate[0].cart.filter(
+    (ele) => ele === productID
+  );
+  if (currentCart.length == 0) {
+    const user = await userModel.findOneAndUpdate(
+      { username: isLoggedIn.username },
+      { $push: { cart: productID } }
+    );
+    return res.status(200).json({ msg: "element Added Successfully" });
+  } else if (currentCart.length > 0) {
+    const user = await userModel.findOneAndUpdate(
+      { username: isLoggedIn.username },
+      { $pull: { cart: productID } }
+    );
+    return res.status(200).json({ msg: "element removed successfully" });
+  }
+};
+
+module.exports = { favoriteManagment, getFavorites, cartManagment, getCart };

@@ -11,6 +11,7 @@ module.exports = {
       gridTemplateColumns: {
         products: "20% 80%",
         contact: "60% 40%",
+        favorites: "30% 70%",
       },
       listStyleType: {
         plus: "+",
