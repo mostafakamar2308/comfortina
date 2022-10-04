@@ -19,6 +19,8 @@ function Product({
   useEffect(() => {
     const loved = user.favoriteList.filter((ele) => ele === productId);
     loved.length > 0 ? setLovedBtn(true) : setLovedBtn(false);
+    const cartItem = user.cart.filter((ele) => ele === productId);
+    cartItem.length > 0 ? setBuyBtn(true) : setBuyBtn(false);
   }, []);
 
   const handleFavorite = (e) => {

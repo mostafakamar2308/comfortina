@@ -12,6 +12,7 @@ module.exports = {
         products: "20% 80%",
         contact: "60% 40%",
         favorites: "30% 70%",
+        cart: "30% 60% 10%",
       },
       listStyleType: {
         plus: "+",

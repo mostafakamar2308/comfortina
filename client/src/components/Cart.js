@@ -3,8 +3,28 @@ import React, { useEffect, useState } from "react";
 import close from "../assets/close.png";
 import ProductBuy from "./productBuy";
 
-function Cart({ handleOverLay, cart }) {
+function Cart({ handleOverLay, cart, handleCart }) {
   const [productData, setProductData] = useState([]);
+  const removeItem = (id) => {
+    if (window.localStorage.getItem("userToken")) {
+      const token = window.localStorage.getItem("userToken");
+      axios
+        .post("http://localhost:5000/api/v1/products/cart", {
+          token,
+          id,
+        })
+        .then((res) => {
+          const inCart = cart.filter((ele) => ele === id);
+          if (inCart.length > 0) {
+            handleCart((prev) => {
+              return prev.filter((ele) => ele !== id);
+            });
+          } else {
+            handleCart((prev) => [...prev, id]);
+          }
+        });
+    }
+  };
 
   useEffect(() => {
     //It works
@@ -29,13 +49,13 @@ function Cart({ handleOverLay, cart }) {
           <img src={close} alt="close overLay" className="w-10"></img>
         </button>
       </div>
-      <div>
+      <div className="flex flex-col justify-center items-center p-2 gap-5">
         {productData.length > 0 ? (
           productData.map((ele) => {
             const product = ele.product;
-            console.log(ele);
             return (
               <ProductBuy
+                removeItem={removeItem}
                 productId={product._id}
                 productName={product.name}
                 productPrice={product.price}
