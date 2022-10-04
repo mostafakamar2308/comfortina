@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.678105d1.css",
+    "main.js": "/static/js/main.1f3176a0.js",
+    "static/media/hero.png": "/static/media/hero.f93501025a2268424ca8.png",
+    "static/media/loupe.png": "/static/media/loupe.c6544d3156a8bde3d076.png",
+    "static/media/unlovedheart.png": "/static/media/unlovedheart.c412cbaead4744166c20.png",
+    "static/media/user.png": "/static/media/user.c920752422c11377083e.png",
+    "static/media/chair.png": "/static/media/chair.6dabcfcbe177316fe9c7.png",
+    "static/media/mail.png": "/static/media/mail.a8df4638190bd6b7b9b5.png",
+    "static/media/shopping-cart.png": "/static/media/shopping-cart.e74f61edf5e0d2231aed.png",
+    "static/media/unbuy.png": "/static/media/unbuy.1d816352cfa193bc6b2f.png",
+    "static/media/buy.png": "/static/media/buy.d35efc659c535c057335.png",
+    "static/media/shelf.png": "/static/media/shelf.8ae77cc5253dd78989a1.png",
+    "static/media/user (1).png": "/static/media/user (1).33e7df0963941edbeb70.png",
+    "static/media/wishlist.png": "/static/media/wishlist.dd15731913cc227f0f6b.png",
+    "static/media/lovedheart.png": "/static/media/lovedheart.556c78a5a9b89d6b2eeb.png",
+    "index.html": "/index.html",
+    "main.678105d1.css.map": "/static/css/main.678105d1.css.map",
+    "main.1f3176a0.js.map": "/static/js/main.1f3176a0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.678105d1.css",
+    "static/js/main.1f3176a0.js"
+  ]
+}
