@@ -39,7 +39,7 @@ function Cart({ handleOverLay, cart, handleCart }) {
     });
   }, [cart]);
   return (
-    <div className="absolute min-h-full bg-white w-full z-40 p-5">
+    <div className="fixed opacity-100 shadow-xl translate-x-1/4 h-2/3 overflow-y-auto top-1/4 rounded-lg bg-white w-2/3 block m-auto z-40 p-5">
       <div className="flex justify-between ">
         <h2 className="text-5xl font-bold">Cart</h2>
         <button
@@ -69,6 +69,13 @@ function Cart({ handleOverLay, cart, handleCart }) {
             No products in your cart
           </div>
         )}
+      </div>
+      <div className="text-5xl font-bold text-center p-3">
+        {productData.reduce((prev, curr) => {
+          console.log(prev, curr.product.price);
+          return prev + curr.product.price;
+        }, 0)}{" "}
+        EGP
       </div>
     </div>
   );
