@@ -5,6 +5,7 @@ import axios from "axios";
 import buy from "../assets/buy.png";
 import unbuy from "../assets/unbuy.png";
 import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function Product({
   productName,
@@ -16,6 +17,7 @@ function Product({
   const [lovedBtn, setLovedBtn] = useState(false);
   const [buyBtn, setBuyBtn] = useState(false);
   const user = useContext(UserContext);
+  const navigate = useNavigate();
   useEffect(() => {
     const loved = user.favoriteList.filter((ele) => ele === productId);
     loved.length > 0 ? setLovedBtn(true) : setLovedBtn(false);
@@ -28,7 +30,7 @@ function Product({
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("http://localhost:5000/api/v1/products/favorite", {
+        .post("https://comfortina-api.vercel.app/api/v1/products/favorite", {
           token,
           productID,
         })
@@ -43,6 +45,9 @@ function Product({
           }
           setLovedBtn((prev) => !prev);
         });
+    } else {
+      console.log("un logged");
+      return navigate("/login");
     }
   };
 
@@ -51,7 +56,7 @@ function Product({
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("http://localhost:5000/api/v1/products/cart", {
+        .post("https://comfortina-api.vercel.app/api/v1/products/cart", {
           token,
           productID,
         })
@@ -66,6 +71,9 @@ function Product({
           }
           setBuyBtn((prev) => !prev);
         });
+    } else {
+      console.log("un logged");
+      navigate("/login");
     }
   };
   return (
