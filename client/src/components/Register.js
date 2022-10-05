@@ -27,7 +27,9 @@ function Register() {
   const registerUser = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/v1/register", { ...registerData })
+      .post("https://comfortina-api.vercel.app/api/v1/register", {
+        ...registerData,
+      })
       .then((res) => {
         console.log(res.data);
         window.localStorage.setItem("userToken", res.data.token);

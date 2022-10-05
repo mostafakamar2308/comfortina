@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/products?limit=2000")
+      .get("https://comfortina-api.vercel.app/api/v1/products?limit=2000")
       .then((res) => {
         setProducts(res.data.products);
       });

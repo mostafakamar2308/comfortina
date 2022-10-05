@@ -19,7 +19,7 @@ function ContactForm() {
   const submitForm = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/v1/contact", { ...formData })
+      .post("https://comfortina-api.vercel.app/api/v1/contact", { ...formData })
       .then((res) => {
         setDone(true);
         res.data.code === 200 ? setSentData(true) : setSentData(false);

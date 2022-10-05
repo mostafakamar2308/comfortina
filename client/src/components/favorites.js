@@ -10,7 +10,7 @@ function Favorites({ handleOverLay, favorites }) {
     //It works
     const products = favorites.map((ele) => {
       return axios
-        .get("http://localhost:5000/api/v1/products/" + ele)
+        .get("https://comfortina-api.vercel.app/api/v1/products/" + ele)
         .then((response) => response.data);
     });
     Promise.all(products).then((res) => {

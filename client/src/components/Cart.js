@@ -9,7 +9,7 @@ function Cart({ handleOverLay, cart, handleCart }) {
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("http://localhost:5000/api/v1/products/cart", {
+        .post("https://comfortina-api.vercel.app/api/v1/products/cart", {
           token,
           productID: id,
         })
@@ -31,7 +31,7 @@ function Cart({ handleOverLay, cart, handleCart }) {
     //It works
     const products = cart.map((ele) => {
       return axios
-        .get("http://localhost:5000/api/v1/products/" + ele)
+        .get("https://comfortina-api.vercel.app/api/v1/products/" + ele)
         .then((response) => response.data);
     });
     Promise.all(products).then((res) => {

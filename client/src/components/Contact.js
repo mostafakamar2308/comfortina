@@ -5,7 +5,7 @@ import SiteHeader from "./Header";
 
 function Contact() {
   return (
-    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white h-screen">
+    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white min-h-screen">
       <SiteHeader />
       <section className="grid grid-cols-contact h-screenMinus p-3">
         <div className="border-r p-3 border-dark-blue">

@@ -23,7 +23,7 @@ function Login() {
   const postLogIn = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/v1/login", { ...logData })
+      .post("https://comfortina-api.vercel.app/api/v1/login", { ...logData })
       .then((res) => {
         userContext.setUser(res.data.user);
         window.localStorage.setItem("userToken", res.data.token);

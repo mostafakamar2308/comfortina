@@ -7,7 +7,7 @@ function Search({ handleSearchInput, handleSearch }) {
       <input
         type="text"
         autoFocus={true}
-        className="text-3xl bg-white w-10/12 h-10  focus:outline-none py-1 px-2"
+        className="text-3xl bg-white w-10/12 h-10 text-black focus:outline-none py-1 px-2"
         onInput={(e) => handleSearchInput(e.target.value)}
       />
       <button className="bg-white" onClick={handleSearch}>
