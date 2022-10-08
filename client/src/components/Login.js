@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import LoaderSpinner from "./LoaderSpinner";
 
 function Login() {
   const [logData, setLogData] = useState({
@@ -15,6 +16,7 @@ function Login() {
   });
   const navigate = useNavigate();
   const [err, setErr] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const userContext = useContext(UserContext);
 
   const handleInput = (e) => {
@@ -25,7 +27,7 @@ function Login() {
 
   const postLogIn = (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     axios
       .post("https://comfortina-api.vercel.app/api/v1/login", { ...logData })
       .then((res) => {
@@ -38,6 +40,7 @@ function Login() {
       .catch((err) => {
         setErr(err.response.data);
         window.localStorage.removeItem("userToken");
+        setIsLoading(false);
       });
   };
 
@@ -68,9 +71,9 @@ function Login() {
             <button
               type="submit"
               onClick={postLogIn}
-              className="border py-1 px-2 w-2/3 text-white font-bold block m-auto rounded-2xl bg-gradient-to-r from-rose-500 via-red-400 to-red-500"
+              className="border py-1 px-2 w-2/3 text-2xl text-white font-bold block m-auto rounded-2xl bg-gradient-to-r from-rose-500 via-red-400 to-red-500"
             >
-              Log In
+              {!isLoading ? "Log In" : <LoaderSpinner />}
             </button>
           </div>
           <Link to="/register" className="text-blue-700 hover:text-black my-2">

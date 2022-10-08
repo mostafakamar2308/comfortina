@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState, lazy, Suspense } from "react";
 import axios from "axios";
+import LoaderSpinner from "./components/LoaderSpinner";
 
 const Home = lazy(() => import("./components/Home"));
 const ProductPage = lazy(() => import("./components/ProductPage"));
@@ -51,7 +52,7 @@ function App() {
   const [cartOverlay, setCartOverlay] = useState(false);
   return (
     <>
-      <Suspense fallback={<div>Loading ...</div>}>
+      <Suspense fallback={<LoaderSpinner />}>
         {favoriteOverlay && (
           <Favorites
             favorites={favoriteList}
@@ -67,7 +68,7 @@ function App() {
         )}
       </Suspense>
       <BrowserRouter basename="/">
-        <Suspense fallback={<div>Loading ...</div>}>
+        <Suspense fallback={<LoaderSpinner />}>
           <UserContext.Provider
             value={{
               user,

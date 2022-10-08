@@ -1,5 +1,6 @@
 import React, { useContext, lazy, Suspense } from "react";
 import { AppContext } from "./Home";
+import LoaderSpinner from "./LoaderSpinner";
 const CategoriesProduct = lazy(() => import("./CategoriesProduct"));
 
 function HomeProducts() {
@@ -10,7 +11,7 @@ function HomeProducts() {
   const desks = context.products.filter((ele) => ele.type === "desk");
   return (
     <section className="">
-      <Suspense fallback={<div>Loading ...</div>}>
+      <Suspense fallback={<LoaderSpinner />}>
         <CategoriesProduct
           products={chairs.slice(0, 4)}
           categoryName="Chairs"

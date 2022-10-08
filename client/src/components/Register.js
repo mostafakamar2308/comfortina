@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import LoaderSpinner from "./LoaderSpinner";
+
 function Register() {
   const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({
@@ -17,6 +19,7 @@ function Register() {
     name: "",
     username: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
   const userContext = useContext(UserContext);
 
@@ -28,6 +31,7 @@ function Register() {
 
   const registerUser = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios
       .post("https://comfortina-api.vercel.app/api/v1/register", {
         ...registerData,
@@ -41,6 +45,7 @@ function Register() {
       .catch((err) => {
         console.log(err.response.data.msg);
         setErr(err.response.data.msg);
+        setIsLoading(false);
       });
   };
   return (
@@ -88,7 +93,7 @@ function Register() {
               onClick={registerUser}
               className="border py-1 px-2 w-2/3 text-white font-bold block m-auto rounded-2xl bg-gradient-to-r from-rose-500 via-red-400 to-red-500"
             >
-              Register
+              {!isLoading ? "Register" : <LoaderSpinner />}
             </button>
           </div>
           <Link to="/login" className="text-blue-700 hover:text-black my-2">
