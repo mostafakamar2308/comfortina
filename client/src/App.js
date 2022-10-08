@@ -1,14 +1,16 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import ProductPage from "./components/ProductPage";
-import Contact from "./components/Contact";
-import Login from "./components/Login";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, lazy, Suspense } from "react";
 import axios from "axios";
-import Register from "./components/Register";
-import Favorites from "./components/favorites";
-import Cart from "./components/Cart";
+
+const Home = lazy(() => import("./components/Home"));
+const ProductPage = lazy(() => import("./components/ProductPage"));
+const Contact = lazy(() => import("./components/Contact"));
+const Login = lazy(() => import("./components/Login"));
+
+const Register = lazy(() => import("./components/Register"));
+const Favorites = lazy(() => import("./components/favorites"));
+const Cart = lazy(() => import("./components/Cart"));
 
 const UserContext = createContext();
 const Overlay = createContext();
@@ -49,41 +51,49 @@ function App() {
   const [cartOverlay, setCartOverlay] = useState(false);
   return (
     <>
-      {favoriteOverlay && (
-        <Favorites
-          favorites={favoriteList}
-          handleOverLay={setFavoriteOverlay}
-        />
-      )}
-      {cartOverlay && (
-        <Cart handleOverLay={setCartOverlay} cart={cart} handleCart={setCart} />
-      )}
+      <Suspense fallback={<div>Loading ...</div>}>
+        {favoriteOverlay && (
+          <Favorites
+            favorites={favoriteList}
+            handleOverLay={setFavoriteOverlay}
+          />
+        )}
+        {cartOverlay && (
+          <Cart
+            handleOverLay={setCartOverlay}
+            cart={cart}
+            handleCart={setCart}
+          />
+        )}
+      </Suspense>
       <BrowserRouter basename="/">
-        <UserContext.Provider
-          value={{
-            user,
-            setUser,
-            favoriteList,
-            setFavoriteList,
-            cart,
-            setCart,
-          }}
-        >
-          <Overlay.Provider
+        <Suspense fallback={<div>Loading ...</div>}>
+          <UserContext.Provider
             value={{
-              setFavoriteOverlay,
-              setCartOverlay,
+              user,
+              setUser,
+              favoriteList,
+              setFavoriteList,
+              cart,
+              setCart,
             }}
           >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<ProductPage />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </Routes>
-          </Overlay.Provider>
-        </UserContext.Provider>
+            <Overlay.Provider
+              value={{
+                setFavoriteOverlay,
+                setCartOverlay,
+              }}
+            >
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<ProductPage />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            </Overlay.Provider>
+          </UserContext.Provider>
+        </Suspense>
       </BrowserRouter>
     </>
   );
