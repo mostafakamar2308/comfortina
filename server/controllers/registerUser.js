@@ -8,15 +8,15 @@ const registerUser = async (req, res) => {
   }
   //check duplicate usernames
   const isUserName = await userModel.find({ username });
-  if (isUserName) {
+  if (isUserName.length > 0) {
     return res
       .status(400)
-      .json({ status: 11000, msg: "Please user Another UserName" });
+      .json({ status: 11000, msg: "Please user Another Username" });
   }
 
   //check duplicate mails
   const isEmail = await userModel.find({ email });
-  if (isEmail) {
+  if (isEmail.length > 0) {
     return res
       .status(400)
       .json({ status: 11000, msg: "Please user Another Email" });
