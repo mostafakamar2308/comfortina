@@ -6,19 +6,35 @@ const registerUser = async (req, res) => {
   if (!isAdmin) {
     isAdmin = false;
   }
+  //check duplicate usernames
+  const isUserName = await userModel.find({ username });
+  if (isUserName) {
+    return res
+      .status(400)
+      .json({ status: 11000, msg: "Please user Another UserName" });
+  }
+
+  //check duplicate mails
+  const isEmail = await userModel.find({ email });
+  if (isEmail) {
+    return res
+      .status(400)
+      .json({ status: 11000, msg: "Please user Another Email" });
+  }
   const user = { username, password, name, email, isAdmin };
+
+  await userModel.find({ username });
   const UserDB = await userModel.create({ ...user });
+
   const token = UserDB.createJWT();
-  res
-    .status(201)
-    .json({
-      user: {
-        username: UserDB.username,
-        name: UserDB.name,
-        isAdmin: UserDB.isAdmin,
-      },
-      token,
-    });
+  res.status(201).json({
+    user: {
+      username: UserDB.username,
+      name: UserDB.name,
+      isAdmin: UserDB.isAdmin,
+    },
+    token,
+  });
 };
 
 const login = async (req, res) => {
