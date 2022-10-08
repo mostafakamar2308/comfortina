@@ -30,7 +30,7 @@ function Product({
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("https://comfortina-api.vercel.app/api/v1/products/favorite", {
+        .post("/api/v1/products/favorite", {
           token,
           productID,
         })
@@ -56,7 +56,7 @@ function Product({
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("https://comfortina-api.vercel.app/api/v1/products/cart", {
+        .post("/api/v1/products/cart", {
           token,
           productID,
         })

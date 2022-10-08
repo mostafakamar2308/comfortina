@@ -29,7 +29,7 @@ function Register() {
   const registerUser = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/v1/register", {
+      .post("/api/v1/register", {
         ...registerData,
       })
       .then((res) => {

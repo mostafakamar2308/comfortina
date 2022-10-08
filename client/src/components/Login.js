@@ -6,12 +6,14 @@ import pass from "../assets/padlock.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [logData, setLogData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const [err, setErr] = useState("");
   const userContext = useContext(UserContext);
 
@@ -25,12 +27,13 @@ function Login() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/v1/login", { ...logData })
+      .post("/api/v1/login", { ...logData })
       .then((res) => {
         console.log(res.data);
         setErr("");
         userContext.setUser(res.data.user);
         window.localStorage.setItem("userToken", res.data.token);
+        navigate("/products");
       })
       .catch((err) => {
         setErr(err.response.data);

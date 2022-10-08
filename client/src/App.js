@@ -21,7 +21,7 @@ function App() {
     if (window.localStorage.getItem("userToken")) {
       let token = window.localStorage.getItem("userToken");
       axios
-        .post("https://comfortina-api.vercel.app/api/v1/token", { token })
+        .post("/api/v1/token", { token })
         .then((res) => {
           setUser(res.data);
         })
@@ -30,17 +30,14 @@ function App() {
           setUser({});
         });
       axios
-        .post(
-          "https://comfortina-api.vercel.app/api/v1/products/getFavorites",
-          {
-            token: window.localStorage.getItem("userToken"),
-          }
-        )
+        .post("/api/v1/products/getFavorites", {
+          token: window.localStorage.getItem("userToken"),
+        })
         .then((res) => {
           setFavoriteList(res.data.favorites);
         });
       axios
-        .post("https://comfortina-api.vercel.app/api/v1/products/getCart", {
+        .post("/api/v1/products/getCart", {
           token: window.localStorage.getItem("userToken"),
         })
         .then((res) => {

@@ -12,11 +12,9 @@ function Home() {
   const userContext = useContext(UserContext);
 
   useEffect(() => {
-    axios
-      .get("https://comfortina-api.vercel.app/api/v1/products?limit=2000")
-      .then((res) => {
-        setProducts(res.data.products);
-      });
+    axios.get("/api/v1/products?limit=2000").then((res) => {
+      setProducts(res.data.products);
+    });
   }, []);
   return (
     products.length > 0 && (
