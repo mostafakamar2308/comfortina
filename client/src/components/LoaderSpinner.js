@@ -1,8 +1,8 @@
 import React from "react";
 
-function LoaderSpinner() {
+function LoaderSpinner({ btn }) {
   return (
-    <div className="lds-facebook">
+    <div className={!btn ? "lds-facebook" : "btn-loader"}>
       <div></div>
       <div></div>
       <div></div>

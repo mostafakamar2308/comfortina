@@ -93,7 +93,7 @@ function Register() {
               onClick={registerUser}
               className="border py-1 px-2 w-2/3 text-white font-bold block m-auto rounded-2xl bg-gradient-to-r from-rose-500 via-red-400 to-red-500"
             >
-              {!isLoading ? "Register" : <LoaderSpinner />}
+              {!isLoading ? "Register" : <LoaderSpinner btn={true} />}
             </button>
           </div>
           <Link to="/login" className="text-blue-700 hover:text-black my-2">

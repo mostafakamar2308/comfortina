@@ -73,7 +73,7 @@ function Login() {
               onClick={postLogIn}
               className="border py-1 px-2 w-2/3 text-2xl text-white font-bold block m-auto rounded-2xl bg-gradient-to-r from-rose-500 via-red-400 to-red-500"
             >
-              {!isLoading ? "Log In" : <LoaderSpinner />}
+              {!isLoading ? "Log In" : <LoaderSpinner btn={true} />}
             </button>
           </div>
           <Link to="/register" className="text-blue-700 hover:text-black my-2">
