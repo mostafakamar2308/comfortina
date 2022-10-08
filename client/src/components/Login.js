@@ -12,6 +12,7 @@ function Login() {
     email: "",
     password: "",
   });
+  const [err, setErr] = useState("");
   const userContext = useContext(UserContext);
 
   const handleInput = (e) => {
@@ -22,11 +23,18 @@ function Login() {
 
   const postLogIn = (e) => {
     e.preventDefault();
+
     axios
-      .post("https://comfortina-api.vercel.app/api/v1/login", { ...logData })
+      .post("http://localhost:5000/api/v1/login", { ...logData })
       .then((res) => {
+        console.log(res.data);
+        setErr("");
         userContext.setUser(res.data.user);
         window.localStorage.setItem("userToken", res.data.token);
+      })
+      .catch((err) => {
+        setErr(err.response.data);
+        window.localStorage.removeItem("userToken");
       });
   };
 
@@ -53,6 +61,7 @@ function Login() {
               label="Password"
               img={pass}
             />
+            {err && <p className="text-light-red text-center text-sm">{err}</p>}
             <button
               type="submit"
               onClick={postLogIn}
