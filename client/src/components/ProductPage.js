@@ -30,7 +30,7 @@ function ProductPage() {
   const search = () => {
     axios
       .get(
-        "/api/v1/products?type=" +
+        "https://comfortina-api.vercel.app/api/v1/products?type=" +
           category.filter((ele) => ele.active === true)[0].categoryName +
           "&name=" +
           searchValue +

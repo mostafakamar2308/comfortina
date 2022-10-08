@@ -27,7 +27,7 @@ function Login() {
     e.preventDefault();
 
     axios
-      .post("/api/v1/login", { ...logData })
+      .post("https://comfortina-api.vercel.app/api/v1/login", { ...logData })
       .then((res) => {
         console.log(res.data);
         setErr("");

@@ -30,7 +30,7 @@ function Product({
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("/api/v1/products/favorite", {
+        .post("https://comfortina-api.vercel.app/api/v1/products/favorite", {
           token,
           productID,
         })
@@ -46,7 +46,6 @@ function Product({
           setLovedBtn((prev) => !prev);
         });
     } else {
-      console.log("un logged");
       return navigate("/login");
     }
   };
@@ -56,7 +55,7 @@ function Product({
     if (window.localStorage.getItem("userToken")) {
       const token = window.localStorage.getItem("userToken");
       axios
-        .post("/api/v1/products/cart", {
+        .post("https://comfortina-api.vercel.app/api/v1/products/cart", {
           token,
           productID,
         })

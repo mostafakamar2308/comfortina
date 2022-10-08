@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "https://comfortina-api.vercel.app/",
+  "proxy": "https://comfortina-api.vercel.app",
   "private": true,
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "serve": "^14.0.1",
     "tailwindcss": "^3.1.8"
   }
 }
