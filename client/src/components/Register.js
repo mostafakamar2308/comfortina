@@ -37,7 +37,6 @@ function Register() {
         ...registerData,
       })
       .then((res) => {
-        console.log(res.data);
         window.localStorage.setItem("userToken", res.data.token);
         userContext.setUser(res.data.user);
         navigate("/products");

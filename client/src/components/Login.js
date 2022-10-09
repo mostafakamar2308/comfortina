@@ -31,7 +31,6 @@ function Login() {
     axios
       .post("https://comfortina-api.vercel.app/api/v1/login", { ...logData })
       .then((res) => {
-        console.log(res.data);
         setErr("");
         userContext.setUser(res.data.user);
         window.localStorage.setItem("userToken", res.data.token);

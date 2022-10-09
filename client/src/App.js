@@ -23,7 +23,6 @@ function App() {
   useEffect(() => {
     if (window.localStorage.getItem("userToken")) {
       let token = window.localStorage.getItem("userToken");
-      console.log(token);
       axios
         .post("https://comfortina-api.vercel.app/api/v1/token", { token })
         .then((res) => {
