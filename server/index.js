@@ -13,7 +13,11 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello, e-commerce");
 });
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use("/api/v1", authRouter);
 app.use("/api/v1/products", productRoute);
 app.use("/api/v1/contact", contactRouter);
