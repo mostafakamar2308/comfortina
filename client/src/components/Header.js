@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import Actions from "./Actions";
 import MobileNav from "./MobileNav";
+import { Link } from "react-router-dom";
 
 function SiteHeader(props) {
   const [isMobile, setIsMobile] = useState(false);
   const [navOpen, setIsNavOpen] = useState(false);
   const [activepage, setActivePage] = useState(props.activepage || 0);
   useEffect(() => {
-    console.log(window.innerWidth);
     window.innerWidth <= 640 ? setIsMobile(true) : setIsMobile(false);
   }, []);
   return (
@@ -18,9 +18,11 @@ function SiteHeader(props) {
       }
     >
       <div className="flex justify-between">
-        <h1 className="logo text-3xl font-bold pointer-events-none text-white uppercase">
-          Comfortina
-        </h1>
+        <Link to="/">
+          <h1 className="logo text-3xl font-bold pointer-events-none text-white uppercase">
+            Comfortina
+          </h1>
+        </Link>
         {isMobile && (
           <button
             onClick={() => setIsNavOpen((prev) => !prev)}
