@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{jsx,js}"],
+  content: [
+    "./src/**/*.{jsx,js}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -23,6 +26,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
   // plugins: [require("@tailwindcss/line-clamp")],
 };

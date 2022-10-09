@@ -6,7 +6,7 @@ import SiteHeader from "./Header";
 function Contact() {
   return (
     <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white min-h-screen h-full">
-      <SiteHeader />
+      <SiteHeader activepage={2} />
       <section className="md:grid md:grid-cols-contact min-h-screenMinus p-3 md:place-items-center">
         <div className="md:border-r p-3 md:border-dark-blue">
           <h3 className="text-3xl font-bold my-3 text-dark-blue">

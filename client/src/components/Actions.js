@@ -19,27 +19,31 @@ function Actions() {
   }, [context.cart.length]);
 
   return (
-    <div className="flex justify-end gap-x-5 font-semibold">
+    <div className="md:flex md:justify-end md:gap-x-5 mt-2 font-semibold">
       <button
-        className="flex"
+        className="flex items-center"
         onClick={() => {
           overlay.setFavoriteOverlay((prev) => !prev);
         }}
       >
         <img src={wish} alt="wishList icon" className="h-9"></img>
-        <p className="self-end text-sm">{favoriteCounter || 0}</p>
+        <p className="self-end text-sm md:text-white text-black">
+          {favoriteCounter || 0}
+        </p>
       </button>
       <button
-        className="flex"
+        className="flex items-center"
         onClick={() => {
           overlay.setCartOverlay((prev) => !prev);
         }}
       >
         <img src={cart} alt="cart icon" className="h-9"></img>
-        <p className="text-sm self-end">{cartCounter}</p>
+        <p className="text-sm self-end md:text-white text-black">
+          {cartCounter}
+        </p>
       </button>
       {context.user ? (
-        <button className="text-center rounded-full outline outline-2 p-2 hover:outline-4">
+        <button className="text-center rounded-full outline outline-2 p-2 my-2 hover:outline-4 md:text-white text-black">
           {context.user &&
             context.user.name
               .split(" ")

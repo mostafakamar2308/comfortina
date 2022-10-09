@@ -14,7 +14,6 @@ function Cart({ handleOverLay, cart, handleCart }) {
           productID: id,
         })
         .then((res) => {
-          console.log(res);
           const inCart = cart.filter((ele) => ele === id);
           if (inCart.length > 0) {
             handleCart((prev) => {
@@ -39,7 +38,7 @@ function Cart({ handleOverLay, cart, handleCart }) {
     });
   }, [cart]);
   return (
-    <div className="fixed shadow-xl md:translate-x-1/4 h-2/3 w-10/12 overflow-y-auto top-1/4 translate-x-10 rounded-lg bg-white md:w-2/3 block z-40 p-5">
+    <div className="md:absolute shadow-xl h-screen w-screen overflow-y-auto rounded-lg bg-white  block z-40 p-5">
       <div className="flex justify-between ">
         <h2 className="text-5xl font-bold">Cart</h2>
         <button
@@ -73,7 +72,6 @@ function Cart({ handleOverLay, cart, handleCart }) {
       {productData.length > 0 && (
         <div className="text-5xl font-bold text-center p-3">
           {productData.reduce((prev, curr) => {
-            console.log(prev, curr.product.price);
             return prev + curr.product.price;
           }, 0)}
           EGP
