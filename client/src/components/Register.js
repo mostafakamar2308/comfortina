@@ -54,7 +54,7 @@ function Register() {
       <div className="gap-y-2 h-screen flex flex-col items-center justify-center">
         <form className="flex flex-col justify-around items-center h-5/6 gap-y-2 bg-white w-96 rounded-md">
           <h2 className="text-4xl font-bold pointer-events-none">Register</h2>
-          <div className="flex flex-col gap-y-4 w-3/5">
+          <div className="flex flex-col gap-y-4 w-4/5 items-center">
             <LoginInput
               placeholder="Enter your Name"
               id="name"

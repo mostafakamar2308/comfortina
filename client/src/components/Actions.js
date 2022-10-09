@@ -19,7 +19,7 @@ function Actions() {
   }, [context.cart.length]);
 
   return (
-    <div className="md:flex md:justify-end md:gap-x-5 mt-2 font-semibold">
+    <div className="flex flex-col gap-y-2 pl-3 md:pl-0 md:flex-row md:justify-end md:gap-x-5 mt-2 font-semibold">
       <button
         className="flex items-center"
         onClick={() => {
