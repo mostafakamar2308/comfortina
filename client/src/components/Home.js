@@ -23,7 +23,7 @@ function Home() {
     products.length > 0 && (
       <AppContext.Provider value={{ products }}>
         <div className="relative w-screen box-border bg-gradient-to-b from-sky-400 to-sky-200 text-white">
-          <SiteHeader absolute={true} />
+          <SiteHeader absolute={false} />
           <Hero />
           <HomeProducts />
         </div>

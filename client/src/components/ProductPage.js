@@ -66,20 +66,22 @@ function ProductPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white h-fit">
+    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white min-h-screen h-fit">
       <SiteHeader absolute={false} />
-      <section className="grid grid-cols-products relative">
-        <div className="categories flex flex-col items-center top-0 gap-x-10 py-10 border-r border-dark-blue">
+      <section className="md:grid md:grid-cols-products relative">
+        <div className="categories flex flex-col items-center py-5 top-0 gap-x-10  border-r border-dark-blue">
           <Search handleSearchInput={setSearchValue} handleSearch={search} />
-          {category.map((ele) => (
-            <CategoryButton
-              key={ele.categoryName}
-              image={ele.img}
-              active={ele.active}
-              categoryName={ele.categoryName}
-              setCategory={changeCategory}
-            />
-          ))}
+          <div className="w-10/12 flex justify-center md:flex-col md:items-center">
+            {category.map((ele) => (
+              <CategoryButton
+                key={ele.categoryName}
+                image={ele.img}
+                active={ele.active}
+                categoryName={ele.categoryName}
+                setCategory={changeCategory}
+              />
+            ))}
+          </div>
         </div>
         <div className="">
           <div className="flex flex-wrap justify-center gap-5 p-3">

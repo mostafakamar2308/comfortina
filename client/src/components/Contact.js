@@ -5,10 +5,10 @@ import SiteHeader from "./Header";
 
 function Contact() {
   return (
-    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white min-h-screen">
+    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white min-h-screen h-full">
       <SiteHeader />
-      <section className="grid grid-cols-contact h-screenMinus p-3">
-        <div className="border-r p-3 border-dark-blue">
+      <section className="md:grid md:grid-cols-contact min-h-screenMinus p-3 md:place-items-center">
+        <div className="md:border-r p-3 md:border-dark-blue">
           <h3 className="text-3xl font-bold my-3 text-dark-blue">
             Why you should talk to us:
           </h3>

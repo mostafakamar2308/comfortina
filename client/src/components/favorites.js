@@ -19,7 +19,7 @@ function Favorites({ handleOverLay, favorites }) {
   }, [favorites]);
 
   return (
-    <section className="fixed h-screen bg-white z-30 w-full p-5">
+    <section className="absolute min-h-screen h-fit bg-white z-30 w-full p-5">
       <div className="flex items-center justify-between p-3">
         <h2 className="text-5xl font-bold">Favorites</h2>
         <button
@@ -30,7 +30,7 @@ function Favorites({ handleOverLay, favorites }) {
           <img src={close} width="40" alt="x" />
         </button>
       </div>
-      <div className="grid gap-y-5 place-items-center h-24">
+      <div className="grid gap-y-5 place-items-center ">
         {productData.length > 0 ? (
           productData.map((ele) => {
             const product = ele.product;
@@ -45,7 +45,7 @@ function Favorites({ handleOverLay, favorites }) {
             );
           })
         ) : (
-          <p className="text-4xl font-bold text-transparent  bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 ">
+          <p className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-gray-900 to-gray-600 ">
             Nothing in the favorites
           </p>
         )}

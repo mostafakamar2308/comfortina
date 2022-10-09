@@ -83,7 +83,7 @@ function Product({
       <button
         onClick={handleFavorite}
         dataid={productId}
-        className="absolute hidden opacity-0 transition-all duration-300 right-2 top-2 group-hover:block group-hover:opacity-100 "
+        className="absolute lg:hidden lg:opacity-0 transition-all duration-300 right-2 top-2 group-hover:block group-hover:opacity-100 "
       >
         <img
           dataid={productId}
@@ -97,7 +97,7 @@ function Product({
         <button
           dataid={productId}
           onClick={handleBuy}
-          className="absolute bottom-2 right-2 w-10 opacity-0 transition-all border rounded-full p-1 border-black duration-300 group-hover:opacity-100"
+          className="absolute bottom-2 right-2 w-10 lg:opacity-0 transition-all border rounded-full p-1 border-black duration-300 group-hover:opacity-100"
         >
           <img
             dataid={productId}

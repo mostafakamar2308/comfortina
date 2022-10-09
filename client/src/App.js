@@ -51,7 +51,7 @@ function App() {
   const [favoriteOverlay, setFavoriteOverlay] = useState(false);
   const [cartOverlay, setCartOverlay] = useState(false);
   return (
-    <>
+    <div className="relative">
       <Suspense fallback={<LoaderSpinner />}>
         {favoriteOverlay && (
           <Favorites
@@ -96,7 +96,7 @@ function App() {
           </UserContext.Provider>
         </Suspense>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 export { UserContext, Overlay };

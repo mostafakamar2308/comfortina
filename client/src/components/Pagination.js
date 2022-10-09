@@ -18,7 +18,7 @@ function Pagination({ itemsCount, pageLimit, currentPage, handlePagintation }) {
     paginationFN();
   }, [pages, currentPage]);
   return (
-    <div className="flex justify-center gap-2 py-2">
+    <div className="flex gap-2 py-2 w-2/3 mx-auto flex-wrap justify-center items-center">
       {arr.length > 0 &&
         arr.map((ele) => (
           <button
