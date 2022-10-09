@@ -10,8 +10,6 @@ Comfortina is a fullstack e-commerce site made by MERN stack + Tailwind CSS. It'
 The project api depends on real data I scrapped from Jumia using another project of mine [Jumia Scrapper](https://github.com/mostafakamar2308/jumia-scrapper).
 The project is for learning purposes only and I don't own any of the data it uses.
 
----
-
 ## Features
 
 ### Backend Features (API)
@@ -54,8 +52,6 @@ The project is for learning purposes only and I don't own any of the data it use
 - Lazy Loading for Products and Routes
 - Error Preview for wrong form inputs
 
----
-
 ## Tech
 
 Comfortina uses a number of open source projects to work properly:
@@ -66,8 +62,6 @@ Comfortina uses a number of open source projects to work properly:
 - Tailwind CSS
 - MongoDB
 - Git and GitHub
-
----
 
 ## What I learned
 
@@ -90,8 +84,6 @@ Comfortina uses a number of open source projects to work properly:
 - How to write Different Endpoints
 - How to deploy an API on Vercel
 
----
-
 ## FeedBack
 
-If there is any feedback, I'd Be happy to hear it :smile:
+If there is any feedback or questions, I'd Be happy to hear it :smile: , You can contact me either on [LinkedIn](https://www.linkedin.com/in/mostafa-kamar/) or [Facebook](https://www.facebook.com/MostafaKamar2308).
