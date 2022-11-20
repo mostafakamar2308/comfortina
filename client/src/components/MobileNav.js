@@ -5,7 +5,7 @@ import Actions from "./Actions";
 function MobileNav({ activepage }) {
   console.log(activepage);
   return (
-    <div className=" w-full md:block md:w-auto" id="navbar-default">
+    <div className=" block md:w-auto" id="navbar-default">
       <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
           <Link

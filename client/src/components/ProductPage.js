@@ -66,7 +66,7 @@ function ProductPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-white min-h-screen h-fit">
+    <div className="bg-brown-light text-white min-h-full h-fit">
       <SiteHeader absolute={false} activepage={1} />
       <section className="md:grid md:grid-cols-products relative">
         <div className="categories flex flex-col items-center py-5 top-0 gap-x-10  border-r border-dark-blue">

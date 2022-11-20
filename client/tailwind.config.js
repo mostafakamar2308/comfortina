@@ -10,6 +10,12 @@ module.exports = {
         "dark-blue": "#201d30",
         "light-red": "#d36060",
         header: "#b7a591",
+        "brown-dark": "#6E4E39",
+        "orange-dark": "#036280",
+        "brown-light": "#AF794B",
+        "blue-dark": "#2d2c31",
+        "grey-light": "#FDEACA",
+        "white-dark": "#F2F2F0",
       },
       gridTemplateColumns: {
         products: "20% 80%",
@@ -23,6 +29,9 @@ module.exports = {
       },
       height: {
         screenMinus: "calc( 100vh - 15vh )",
+      },
+      fontFamily: {
+        alfa: ["Lobst Two", "cursive"],
       },
     },
   },

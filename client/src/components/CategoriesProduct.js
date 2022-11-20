@@ -4,7 +4,7 @@ import Product from "./Product";
 function CategoriesProduct({ products, categoryName }) {
   return (
     <div className="max-w-screen">
-      <h3 className="categories-header w-full  box-border py-5 text-center bg-light-red text-2xl font-bold text-white">
+      <h3 className="categories-header w-full  box-border py-5 text-center bg-orange-dark text-2xl font-bold text-white">
         Best {categoryName}
       </h3>
       <div className="products flex flex-wrap w-full justify-center gap-2 py-2">

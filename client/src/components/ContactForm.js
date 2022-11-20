@@ -64,7 +64,7 @@ function ContactForm() {
           className="w-11/12 border border-dark-blue ml-2 my-2 rounded-md focus:outline-none resize-none text-black"
         />
       </div>
-      <button className="border-white border py-2 px-4 bg-light-red transition-all duration-300 text-white block m-auto rounded-md hover:border-dark-blue">
+      <button className="border-white border py-2 px-4 bg-blue-dark transition-all duration-300 text-white block m-auto rounded-md hover:border-dark-blue">
         Send Message
       </button>
       {done === true && (

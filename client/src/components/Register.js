@@ -48,7 +48,7 @@ function Register() {
       });
   };
   return (
-    <div className="bg-gradient-to-b from-sky-400 to-sky-200 text-black">
+    <div className="bg-brown-light text-black">
       <SiteHeader />
       <div className="gap-y-2 h-screen flex flex-col items-center justify-center">
         <form className="flex flex-col justify-around items-center h-5/6 gap-y-2 bg-white w-96 rounded-md">

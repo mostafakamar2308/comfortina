@@ -9,17 +9,17 @@ function SiteHeader(props) {
   const [navOpen, setIsNavOpen] = useState(false);
   const [activepage, setActivePage] = useState(props.activepage || 0);
   useEffect(() => {
-    window.innerWidth <= 640 ? setIsMobile(true) : setIsMobile(false);
+    window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
   }, []);
   return (
     <header
       className={
-        "md:flex md:justify-between p-5 items-center shadow-lg bg-tranparent  z-10 w-full text-white"
+        "md:flex md:justify-between bg-brown-dark p-5 items-center shadow-lg bg-tranparent  z-10 w-full "
       }
     >
       <div className="flex justify-between">
         <Link to="/">
-          <h1 className="logo text-3xl font-bold pointer-events-none text-white uppercase">
+          <h1 className="text-2xl tracking-wider font-alfa  font-bold pointer-events-none text-white-dark uppercase">
             Comfortina
           </h1>
         </Link>
