@@ -66,12 +66,12 @@ function ProductPage() {
   };
 
   return (
-    <div className="bg-brown-light text-white min-h-full h-fit">
+    <div className="min-h-full text-white bg-brown-light h-fit">
       <SiteHeader absolute={false} activepage={1} />
-      <section className="md:grid md:grid-cols-products relative">
-        <div className="categories flex flex-col items-center py-5 top-0 gap-x-10  border-r border-dark-blue">
+      <section className="relative md:grid md:grid-cols-products">
+        <div className="top-0 flex flex-col items-center py-5 border-r categories gap-x-10 border-dark-blue">
           <Search handleSearchInput={setSearchValue} handleSearch={search} />
-          <div className="w-10/12 flex justify-center md:flex-col md:items-center">
+          <div className="flex justify-center w-10/12 md:flex-col md:items-center">
             {category.map((ele) => (
               <CategoryButton
                 key={ele.categoryName}
@@ -100,12 +100,12 @@ function ProductPage() {
                   );
                 })
               ) : (
-                <div className="flex flex-col justify-center items-center h-screen">
+                <div className="flex flex-col items-center justify-center h-screen">
                   <img src={notFound} alt={notFound} />
                   <p className="text-3xl font-bold">
                     Sorry, We didn't find what you are looking for &#128532;
                   </p>
-                  <p className="text-xl font-bold my-3">
+                  <p className="my-3 text-xl font-bold">
                     Search about Something else
                   </p>
                 </div>

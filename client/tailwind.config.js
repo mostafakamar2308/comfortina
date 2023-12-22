@@ -16,6 +16,7 @@ module.exports = {
         "blue-dark": "#2d2c31",
         "grey-light": "#FDEACA",
         "white-dark": "#F2F2F0",
+        chair: "#626267",
       },
       gridTemplateColumns: {
         products: "20% 80%",

@@ -5,16 +5,17 @@ import SiteHeader from "./Header";
 
 function Contact() {
   return (
-    <div className="bg-brown-light text-white min-h-screen h-full">
+    <div className="h-full min-h-screen text-white bg-brown-light">
       <SiteHeader activepage={2} />
-      <section className="md:grid md:grid-cols-contact min-h-screenMinus p-3 md:place-items-center">
-        <div className="md:border-r p-3 md:border-dark-blue">
-          <h3 className="text-3xl font-bold my-3 text-dark-blue">
+      <section className="flex flex-col items-center">
+        <div className="p-3 md:w-5/6 md:border-dark-blue">
+          <h3 className="my-3 text-3xl font-bold text-dark-blue">
             Why you should talk to us:
           </h3>
           <FAQ />
         </div>
-        <div className="flex justify-center items-center">
+        <hr className="w-full my-5" />
+        <div className="flex items-center justify-center md:pb-2 md:w-1/3">
           <ContactForm />
         </div>
       </section>

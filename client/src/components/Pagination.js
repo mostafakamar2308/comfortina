@@ -18,7 +18,7 @@ function Pagination({ itemsCount, pageLimit, currentPage, handlePagintation }) {
     paginationFN();
   }, [pages, currentPage]);
   return (
-    <div className="flex gap-2 py-2 w-2/3 mx-auto flex-wrap justify-center items-center">
+    <div className="flex flex-wrap items-center justify-center w-2/3 gap-2 py-2 mx-auto">
       {arr.length > 0 &&
         arr.map((ele) => (
           <button
@@ -26,7 +26,7 @@ function Pagination({ itemsCount, pageLimit, currentPage, handlePagintation }) {
             key={ele.page}
             className={
               ele.active
-                ? "border border-dark-blue   p-2 w-10 h-10 bg-light-red text-black "
+                ? "border border-dark-blue   p-2 w-10 h-10 bg-white text-black "
                 : " border border-dark-blue   p-2 w-10 h-10 text-black"
             }
           >

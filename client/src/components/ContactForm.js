@@ -27,7 +27,7 @@ function ContactForm() {
   };
   return (
     <form
-      className="border border-light-red h-96 text-2xl p-5  shadow-lg shadow-dark-blue rounded-md w-fit m-auto"
+      className="w-full p-5 m-auto text-2xl border rounded-lg shadow-lg border-light-red h-96 shadow-chair"
       onSubmit={submitForm}
     >
       <div className="flex flex-col">
@@ -37,13 +37,13 @@ function ContactForm() {
           required
           autoFocus
           onInput={handleFormInput}
-          className="w-11/12 border-b border-b-dark-blue ml-2 my-2 focus:outline-none text-black rounded-md"
+          className="w-11/12 my-2 ml-2 text-black border-none rounded-md focus:outline-none"
         />
       </div>
       <div className="flex flex-col">
         <label htmlFor="email" className="group">
           E-mail
-          <span className="text-sm opacity-0 group-hover:opacity-100 transition-all mx-1">
+          <span className="mx-1 text-sm transition-all opacity-0 group-hover:opacity-100">
             will be replyed on
           </span>
         </label>
@@ -52,7 +52,7 @@ function ContactForm() {
           type="email"
           onInput={handleFormInput}
           required
-          className="w-11/12 border-b border-b-dark-blue ml-2 my-2 focus:outline-none text-black rounded-md"
+          className="w-11/12 my-2 ml-2 text-black border-none rounded-md focus:outline-none"
         />
       </div>
       <div className="flex flex-col">
@@ -61,10 +61,10 @@ function ContactForm() {
           id="msg"
           onInput={handleFormInput}
           required
-          className="w-11/12 border border-dark-blue ml-2 my-2 rounded-md focus:outline-none resize-none text-black"
+          className="w-11/12 my-2 ml-2 text-black border rounded-md resize-none border-dark-blue focus:outline-none"
         />
       </div>
-      <button className="border-white border py-2 px-4 bg-blue-dark transition-all duration-300 text-white block m-auto rounded-md hover:border-dark-blue">
+      <button className="block px-4 py-2 m-auto text-white transition-all duration-300 border border-white rounded-md bg-blue-dark hover:border-dark-blue">
         Send Message
       </button>
       {done === true && (

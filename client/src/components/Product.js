@@ -23,7 +23,7 @@ function Product({
     loved.length > 0 ? setLovedBtn(true) : setLovedBtn(false);
     const cartItem = user.cart.filter((ele) => ele === productId);
     cartItem.length > 0 ? setBuyBtn(true) : setBuyBtn(false);
-  }, []);
+  }, [productId]);
 
   const handleFavorite = (e) => {
     const productID = e.target.getAttribute("dataid");
@@ -77,13 +77,13 @@ function Product({
   };
   return (
     <div
-      className="flex flex-col items-center  w-96 relative group text-black"
+      className="relative flex flex-col items-center overflow-hidden text-black border rounded-md shadow-lg w-96 group"
       dataid={productId}
     >
       <button
         onClick={handleFavorite}
         dataid={productId}
-        className="absolute lg:hidden border border-black rounded-full p-1 lg:opacity-0 transition-all duration-300 right-2 top-2 group-hover:block group-hover:opacity-100 "
+        className="absolute p-1 transition-all duration-300 border border-black rounded-full lg:hidden lg:opacity-0 right-2 top-2 group-hover:block group-hover:opacity-100 "
       >
         <img
           dataid={productId}
@@ -92,12 +92,16 @@ function Product({
           className="h-5"
         />
       </button>
-      <div className="relative">
-        <img src={productImg} alt={productName} />
+      <div className="relative w-full">
+        <img
+          src={productImg}
+          alt={productName}
+          className="object-cover w-full"
+        />
         <button
           dataid={productId}
           onClick={handleBuy}
-          className="absolute bottom-2 right-2 w-10 lg:opacity-0 transition-all border rounded-full p-2 border-black duration-300 group-hover:opacity-100"
+          className="absolute w-10 p-2 transition-all duration-300 border border-black rounded-full bottom-2 right-2 lg:opacity-0 group-hover:opacity-100"
         >
           <img
             dataid={productId}
@@ -106,8 +110,10 @@ function Product({
           ></img>
         </button>
       </div>
-      <h4 className="text-md clamp"> {productName}</h4>
-      <h4 className="font-bold">{productPrice} EGP</h4>
+      <div className=" grid grid-cols-[70%,30%] gap-2 items-center p-2 pr-4 w-full">
+        <h4 className="text-xl font-semibold"> {productName}</h4>
+        <h4 className="text-right ">{productPrice} EGP</h4>
+      </div>
       {productSale > 0 && <div> {productSale}</div>}
     </div>
   );

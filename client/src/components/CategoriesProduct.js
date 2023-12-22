@@ -4,10 +4,10 @@ import Product from "./Product";
 function CategoriesProduct({ products, categoryName }) {
   return (
     <div className="max-w-screen">
-      <h3 className="categories-header w-full  box-border py-5 text-center bg-orange-dark text-2xl font-bold text-white">
+      <h3 className="box-border w-full py-5 text-2xl font-bold text-center text-white categories-header bg-chair">
         Best {categoryName}
       </h3>
-      <div className="products flex flex-wrap w-full justify-center gap-2 py-2">
+      <div className="flex flex-wrap justify-center w-full gap-2 py-2 products">
         {products.map((ele) => {
           return (
             <Product

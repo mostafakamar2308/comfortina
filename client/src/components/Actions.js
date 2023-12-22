@@ -19,15 +19,15 @@ function Actions() {
   }, [context.cart.length]);
 
   return (
-    <div className="flex justify-between pl-3 md:pl-0 md:flex-row md:justify-end md:gap-x-5 mt-2 font-semibold">
+    <div className="flex justify-between pl-3 mt-2 font-semibold md:pl-0 md:flex-row md:justify-end md:gap-x-5">
       <button
         className="flex items-center"
         onClick={() => {
           overlay.setFavoriteOverlay((prev) => !prev);
         }}
       >
-        <img src={wish} alt="wishList icon" className="h-9"></img>
-        <p className="self-end text-sm md:text-white text-black">
+        <img src={wish} alt="wishList icon" className="h-9 invert"></img>
+        <p className="self-end text-sm text-black md:text-white">
           {favoriteCounter || 0}
         </p>
       </button>
@@ -37,13 +37,13 @@ function Actions() {
           overlay.setCartOverlay((prev) => !prev);
         }}
       >
-        <img src={cart} alt="cart icon" className="h-9"></img>
-        <p className="text-sm self-end md:text-white text-black">
+        <img src={cart} alt="cart icon" className="h-9 invert"></img>
+        <p className="self-end text-sm text-black md:text-white">
           {cartCounter}
         </p>
       </button>
       {context.user ? (
-        <button className="text-center rounded-full outline outline-2 p-2 my-2 hover:outline-4 md:text-white text-black">
+        <button className="p-2 my-2 text-center text-black rounded-full outline outline-2 hover:outline-4 md:text-white">
           {context.user &&
             context.user.name
               .split(" ")
@@ -52,7 +52,7 @@ function Actions() {
         </button>
       ) : (
         <Link to="/login">
-          <img src={user} alt="user icon " className="h-9"></img>
+          <img src={user} alt="user icon " className="h-9 invert"></img>
         </Link>
       )}
     </div>

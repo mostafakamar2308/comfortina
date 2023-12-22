@@ -3,20 +3,25 @@ import searchIcon from "../assets/loupe.png";
 
 function Search({ handleSearchInput, handleSearch }) {
   return (
-    <div className="flex md:w-11/12 w-5/6 border-2 border-light-red shadow-md my-5 ">
-      <input
-        type="text"
-        autoFocus={true}
-        className="text-3xl bg-white w-10/12 h-10 text-black focus:outline-none py-1 px-2"
-        onInput={(e) => handleSearchInput(e.target.value)}
-      />
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch();
+      }}
+      className="flex w-5/6 p-2 my-5 overflow-hidden bg-white border-2 rounded-full shadow-md md:w-11/12 border-light-red"
+    >
       <button
-        className="bg-white w-1/6 flex justify-center items-center"
+        className="flex items-center justify-center w-1/6 bg-white border-none"
         onClick={handleSearch}
       >
         <img src={searchIcon} alt="Search Icon" className="h-10 p-1" />
       </button>
-    </div>
+      <input
+        type="text"
+        className="w-10/12 h-10 px-2 py-1 text-xl text-black bg-white border-none focus:outline-none focus:shadow-none"
+        onInput={(e) => handleSearchInput(e.target.value)}
+      />
+    </form>
   );
 }
 
