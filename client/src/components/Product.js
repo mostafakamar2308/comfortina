@@ -71,7 +71,6 @@ function Product({
           setBuyBtn((prev) => !prev);
         });
     } else {
-      console.log("un logged");
       navigate("/login");
     }
   };
@@ -83,7 +82,7 @@ function Product({
       <button
         onClick={handleFavorite}
         dataid={productId}
-        className="absolute p-1 transition-all duration-300 border border-black rounded-full lg:hidden lg:opacity-0 right-2 top-2 group-hover:block group-hover:opacity-100 "
+        className="absolute z-50 flex items-center justify-center w-10 p-2 transition-all duration-300 border border-black rounded-full md:opacity-0 right-2 top-2 group-hover:opacity-100 lg:hover:scale-110 "
       >
         <img
           dataid={productId}
@@ -98,10 +97,12 @@ function Product({
           alt={productName}
           className="object-cover w-full"
         />
+      </div>
+      <div className=" grid grid-cols-[70%,30%] gap-2 items-center p-2 pr-4 w-full relative">
         <button
           dataid={productId}
           onClick={handleBuy}
-          className="absolute w-10 p-2 transition-all duration-300 border border-black rounded-full bottom-2 right-2 lg:opacity-0 group-hover:opacity-100"
+          className="absolute top-0 p-3 transition-all duration-300 -translate-y-8 bg-white border-black rounded-full w-14 right-2 lg:hover:scale-105"
         >
           <img
             dataid={productId}
@@ -109,8 +110,6 @@ function Product({
             alt="Buy items"
           ></img>
         </button>
-      </div>
-      <div className=" grid grid-cols-[70%,30%] gap-2 items-center p-2 pr-4 w-full">
         <h4 className="text-xl font-semibold"> {productName}</h4>
         <h4 className="text-right ">{productPrice} EGP</h4>
       </div>
